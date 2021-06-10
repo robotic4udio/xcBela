@@ -1,4 +1,5 @@
 #!/bin/bash
+make cleanall;
 echo "Deploying SpringBoard...."
 doSync SpringBoard -b --ip 192.168.0.110 --sync-samples --clean-remote --startuploop --ide-stop --ide-nostartup -c "-p64 --disable-led" $*
 echo "done..."
@@ -6,9 +7,9 @@ echo "Deploying TurnHandle...."
 doSync TurnHandle -b --ip 192.168.0.111 --sync-samples --clean-remote --startuploop --ide-stop --ide-nostartup -c "-p64 --disable-led" $*
 echo "done..."
 echo "Deploying BassBot...."
-doSync BassBot -b --ip 192.168.0.112 --clean-remote --startuploop --ide-stop --ide-nostartup -c "-p16 --disable-led" $*
+doSync BassBot -b --ip 192.168.0.112 --clean-remote --startuploop --ide-stop --ide-nostartup -c "-p64 --disable-led" $*
 echo "done..."
 echo "Deploying BassBotSlave...."
-doSync BassBotSlave -b --ip 192.168.0.113 --clean-remote --startuploop --ide-stop --ide-nostartup -c "-p16 --disable-led" $*
+doSync BassBotSlave -b --ip 192.168.0.113 --clean-remote --startuploop --ide-stop --ide-nostartup -c "-p64 --disable-led" $*
 echo "done..." 
 
