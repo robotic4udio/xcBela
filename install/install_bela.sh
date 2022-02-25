@@ -32,6 +32,9 @@ fi
 cd "$XC_ROOT"
 ./Bela/scripts/update_board -y $upgrade_opts
 
+rsync -avz ./install/CustomMakefile* $XC_SSH:/root/Bela/
+
+
 ssh $XC_SSH "cd Bela && rm lib/*"
 ssh $XC_SSH "cd Bela && make -f Makefile.libraries cleanall && make -f Makefile.libraries all"
 ssh $XC_SSH "cd Bela && make lib && make libbelafull"

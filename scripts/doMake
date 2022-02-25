@@ -1,14 +1,16 @@
 #!/bin/bash
+echo "Building Project: BassBot...."
+doSync BassBot $*
+echo "Building Project: Gloves...."
+doSync Gloves $*
+echo "Building Project: Guitar...."
+doSync Guitar $*
+echo "Building Project: Kalimba...."
+doSync Kalimba $*
 echo "Building Project: SpringBoard...."
 doSync SpringBoard $*
 echo "Building Project: TurnHandle...."
 doSync TurnHandle $*
-echo "Building Project: BassBot...."
-doSync BassBot $*
-echo "Building Project: BassBotSlave...."
-doSync BassBotSlave $*
-echo "Building Project: Kalimba...."
-doSync Kalimba $*
 echo "Building Project: BatkTest...."
 doSync BatkTest $*
 echo "done..."
