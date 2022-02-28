@@ -8,8 +8,8 @@ XC_SYSROOT=${XC_ROOT}/sysroot
 
 PLATFORM=`uname`
 if [ "${PLATFORM}" = "Darwin" ]; then
-    export TOOLCHAIN=/usr/local/opt
-    export CLANG=$TOOLCHAIN/llvm/bin/clang++
+    export TOOLCHAIN=/opt/homebrew/opt
+    export CLANG=/opt/homebrew/opt/llvm/bin/clang++
 else
     export TOOLCHAIN=/usr/lib/llvm-10
     export CLANG=/usr/bin/clang++-10

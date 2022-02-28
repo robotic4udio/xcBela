@@ -1,5 +1,12 @@
-TOOLCHAIN=/usr/lib/llvm-10
-CLANG=/usr/bin/clang++-10
+# Linux
+# TOOLCHAIN=/usr/lib/llvm-10
+# CLANG=/usr/bin/clang++-10
+
+# Mac OSX
+TOOLCHAIN=/opt/homebrew/opt
+CLANG=/opt/homebrew/opt/llvm/bin/clang++
+
+# Common
 SYSROOT := ./sysroot
 
 #-Wextra
@@ -22,7 +29,9 @@ BELA_OPTS=--target=arm-linux-gnueabihf \
 	-B$(SYSROOT)/usr/lib/gcc/arm-linux-gnueabihf/6.3.0 \
 	--gcc-toolchain=TOOLCHAIN/arm-linux-gnueabihf-binutils \
 
-BELA_LOPTS=-L$(SYSROOT)/usr/lib/gcc/arm-linux-gnueabihf/6.3.0
+
+BELA_LOPTS=-L$(SYSROOT)/usr/lib/gcc/arm-linux-gnueabihf/6.3.0 \
+	-Wl,-unresolved-symbols=ignore-in-shared-libs
 
 BELA_LDFLAGS=-Wl,--no-as-needed -L${SYSROOT}/usr/local/lib \
     -L${SYSROOT}/usr/xenomai/lib \
