@@ -139,6 +139,9 @@ export XC_SSH=${XC_USER}@${XC_IP}
 
 
 xcExec() {
+	# Clear the host if it is cached in ~/.ssh/known_hosts.
+	echo "Clear the host if it is cached in ~/.ssh/known_hosts..."
+	ssh-keygen -R $XC_IP &> /dev/null || true
     ssh -o LogLevel=ERROR $XC_SSH "$*"
 }
 
@@ -235,7 +238,8 @@ if [ $SYNC_PROJECT -eq 1 ]; then
 		rsync -ac --out-format="   %n" --no-t --delete-after ${XC_ROOT}/build/$SRC_NAME/libraries/$LIBNAME/ $XC_SSH:Bela/libraries/$LIBNAME/build/  
 	done
 	echo "Syncing Project: $PROJECT_NAME to $XC_SSH...."
-	rsync -ac --out-format="   %n" --no-t --delete-after --exclude=Presets --exclude=Samples --exclude=$PROJECT_NAME --exclude=build ${PROJECT_DIR}/ $XC_SSH:Bela/projects/$PROJECT_NAME/  
+	rsync -ac --out-format="   %n" --no-t --delete-after --exclude=$PROJECT_NAME --exclude=build ${PROJECT_DIR}/ $XC_SSH:Bela/projects/$PROJECT_NAME/  
+	#rsync -ac --out-format="   %n" --no-t --delete-after --exclude=$PROJECT_NAME --exclude=Presets --exclude=Samples --exclude=build ${PROJECT_DIR}/ $XC_SSH:Bela/projects/$PROJECT_NAME/  
 	rsync -ac --out-format="   %n" --no-t --delete-after --exclude=Makefile.inc ${XC_ROOT}/build/$SRC_NAME/projects/$PROJECT_NAME/ $XC_SSH:Bela/projects/$PROJECT_NAME/build/  
 	rsync -ac --out-format="   %n" --no-t ${XC_ROOT}/build/$PROJECT_NAME $XC_SSH:Bela/projects/$PROJECT_NAME/
 fi
