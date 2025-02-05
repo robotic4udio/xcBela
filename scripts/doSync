@@ -239,7 +239,7 @@ if [ $SYNC_PROJECT -eq 1 ]; then
 	done
 	echo "Syncing Project: $PROJECT_NAME to $XC_SSH...."
 	rsync -ac --out-format="   %n" --no-t --delete-after --exclude=$PROJECT_NAME --exclude=build ${PROJECT_DIR}/ $XC_SSH:Bela/projects/$PROJECT_NAME/  
-	#rsync -ac --out-format="   %n" --no-t --delete-after --exclude=$PROJECT_NAME --exclude=Presets --exclude=Samples --exclude=build ${PROJECT_DIR}/ $XC_SSH:Bela/projects/$PROJECT_NAME/  
+	# rsync -ac --out-format="   %n" --no-t --delete-after --exclude=$PROJECT_NAME --exclude=Presets --exclude=Samples --exclude=build ${PROJECT_DIR}/ $XC_SSH:Bela/projects/$PROJECT_NAME/  
 	rsync -ac --out-format="   %n" --no-t --delete-after --exclude=Makefile.inc ${XC_ROOT}/build/$SRC_NAME/projects/$PROJECT_NAME/ $XC_SSH:Bela/projects/$PROJECT_NAME/build/  
 	rsync -ac --out-format="   %n" --no-t ${XC_ROOT}/build/$PROJECT_NAME $XC_SSH:Bela/projects/$PROJECT_NAME/
 fi
@@ -247,8 +247,8 @@ fi
 # Sync the samples library
 if [ $SYNC_SAMPLES -eq 1 ]; then
 	echo "Syncing Samples library to $XC_SSH...."
-	rsync -ac --out-format="   %n" --no-t --delete-after ${XC_ROOT}/../samples/ $XC_SSH:Bela/samples/
-	# rsync -ac --out-format="   %n" --no-t --delete-after ${PROJECT_DIR}/Samples/ $XC_SSH:Bela/projects/$PROJECT_NAME/Samples/
+	// rsync -ac --out-format="   %n" --no-t --delete-after ${XC_ROOT}/../Samples/ $XC_SSH:Bela/samples/
+	rsync -ac --out-format="   %n" --no-t --delete-after ${PROJECT_DIR}/Samples/ $XC_SSH:Bela/projects/$PROJECT_NAME/Samples/
 fi
 
 # Sync presets from Bela to Computer
